@@ -23,4 +23,5 @@ class KataTennis
         }
         return [$progress[$j1], $progress[$j2]];
     }
+    
 }
