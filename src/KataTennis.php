@@ -45,7 +45,7 @@ class KataTennis
                     $points2++;
                     break;
             }
-            if ($points1 > 2 | $points2 > 2){
+            if ($points1 > 3 | $points2 > 3){
                 // case game win
                 if (abs($points1 - $points2) >= 2){
                     if ($points1 > $points2){
@@ -55,6 +55,8 @@ class KataTennis
                     }
                     $points1 = 0;
                     $points2 = 0;
+                    $advantage = false;
+                    $equality = false;
                 // case advantage or equality    
                 } else {
                     if ($points1 == $points2) {
@@ -74,9 +76,9 @@ class KataTennis
         ];
 
         if ($advantage === true) {
-            $result[] = "advantage";
+            $result[] = ["advantage"];
         } elseif ($equality === true) {
-            $result[] = "equality";
+            $result[] = ["equality"];
         } else {
             $result[] = [$progress[$points1], $progress[$points2]];
         };
