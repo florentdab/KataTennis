@@ -2,7 +2,7 @@
 
 namespace wcs;
 
-class KataTennis
+class KataTennisString
 {
     public static function score($score)
     {
@@ -21,7 +21,7 @@ class KataTennis
                     break;
             }
         }
-        return [$progress[$j1], $progress[$j2]];
+        return $progress[$j1] . "/" . $progress[$j2];
     }
 
     public static function finalScore($score)
@@ -34,7 +34,7 @@ class KataTennis
         $points2 = 0;
         $advantage = false;
         $equality = false;
-        $sets = [[0,0]];
+        $sets = "0/0";
 
         foreach ($scoreArray as $char){
             switch($char){
@@ -70,20 +70,16 @@ class KataTennis
             }
         }
 
-        $result = [
-            $sets,
-            [$games1, $games2]
-        ];
+        $result = $sets . " - " . $games1 . "/" . $games2 . " - ";
 
         if ($advantage === true) {
-            $result[] = ["advantage"];
+            $result .= "advantage";
         } elseif ($equality === true) {
-            $result[] = ["equality"];
+            $result .= "equality";
         } else {
-            $result[] = [$progress[$points1], $progress[$points2]];
+            $result .= $progress[$points1] . "/" . $progress[$points2];
         };
 
-        //var_dump($result);
         return $result;
     }
 
